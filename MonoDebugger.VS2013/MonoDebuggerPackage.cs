@@ -27,11 +27,16 @@ namespace MonoDebugger.VS2013
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [ProvideAutoLoad("f1536ef8-92ec-443c-9ed7-fdadf150da82")]
     [Guid(GuidList.guidMonoDebugger_VS2013PkgString)]
-    public sealed class MonoDebuggerPackage : Package
+    public sealed class MonoDebuggerPackage : Package,IDisposable
     {
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
         private MonoVisualStudioExtension monoExtension;
         private MonoDebugServer server = new MonoDebugServer();
+
+        public void Dispose()
+        {
+           server.Dispose();
+        }
 
         protected override void Initialize()
         {
