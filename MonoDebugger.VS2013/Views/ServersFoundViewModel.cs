@@ -7,7 +7,7 @@ using MonoDebugger.VS2013.Settings;
 
 namespace MonoDebugger.VS2013.Views
 {
-    public class ServersFoundViewModel
+    public class ServersFoundViewModel:IDisposable
     {
         private readonly CancellationTokenSource cts = new CancellationTokenSource();
 
@@ -18,6 +18,22 @@ namespace MonoDebugger.VS2013.Views
             ManualIp = settings.LastIp;
             LookupServers(cts.Token);
         }
+
+      protected virtual void Dispose(bool disposing)
+      {
+         if (disposing)
+            {
+               // dispose managed resources
+               cts.Dispose();
+            }
+          // free native resources
+      }
+
+      public void Dispose()
+      {
+         Dispose(true);
+	     GC.SuppressFinalize(this);
+      }
 
         public ObservableCollection<MonoServerInformation> Servers { get; set; }
         public MonoServerInformation SelectedServer { get; set; }
