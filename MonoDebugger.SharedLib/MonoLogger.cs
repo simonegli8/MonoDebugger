@@ -17,7 +17,6 @@ namespace MonoDebugger.SharedLib
             if (!Directory.Exists(logPath))
                 Directory.CreateDirectory(logPath);
             LoggerPath = Path.Combine(logPath, "MonoDebugger.log");
-            File.WriteAllText(basePath + "TEst.t", "qasd");
             var config = new LoggingConfiguration();
 
             var fileTarget = new FileTarget { FileName = LoggerPath };
@@ -25,6 +24,7 @@ namespace MonoDebugger.SharedLib
             config.LoggingRules.Add(new LoggingRule("*", LogLevel.Trace, fileTarget));
             var console = new ColoredConsoleTarget();
             config.AddTarget("file", console);
+				console.Layout =  new NLog.Layouts.SimpleLayout("${message}");
             config.LoggingRules.Add(new LoggingRule("*", LogLevel.Trace, console));
 
             LogManager.Configuration = config;

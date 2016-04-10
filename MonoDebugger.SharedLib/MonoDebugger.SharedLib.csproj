@@ -94,6 +94,7 @@
     <Compile Include="StartDebuggingMessage.cs" />
     <Compile Include="StatusMessage.cs" />
     <Compile Include="TcpCommunication.cs" />
+    <Compile Include="WebsiteParameters.cs" />
     <Compile Include="ZipFile.cs" />
   </ItemGroup>
   <ItemGroup>

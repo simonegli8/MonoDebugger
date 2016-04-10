@@ -145,7 +145,7 @@ namespace MonoDebugger.VS2015.Debugger.VisualStudio
         {
             try
             {
-                SyntaxTree syntaxTree = CSharpSyntaxTree.ParseFile(DocumentName);
+                SyntaxTree syntaxTree = CSharpSyntaxTree.ParseText(SourceText.From(System.IO.File.Open(DocumentName, System.IO.FileMode.Open)));
                 TextLine textLine = syntaxTree.GetText().Lines[StartLine];
                 Location location = syntaxTree.GetLocation(textLine.Span);
                 SyntaxTree sourceTree = location.SourceTree;

@@ -31,7 +31,7 @@ namespace MonoDebugger.SharedLib.Server
                     string pdbFile = Path.Combine(Path.GetDirectoryName(file), fileNameWithoutExt + ".pdb");
                     if (File.Exists(pdbFile))
                     {
-                        logger.Trace("Generate mdp for: " + file);
+                        logger.Trace("Generate mdb for: " + file);
                         var procInfo = new ProcessStartInfo(MonoUtils.GetPdb2MdbPath(), Path.GetFileName(file));
                         procInfo.WorkingDirectory = dirInfo.FullName;
                         procInfo.UseShellExecute = false;

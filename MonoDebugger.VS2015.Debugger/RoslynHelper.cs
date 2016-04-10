@@ -23,7 +23,7 @@ namespace MonoDebugger.VS2015.Debugger
                 logger.Trace("Line: {0} Column: {1} Source: {2}", startLine, startColumn, fileName);
 
 
-                SyntaxTree syntaxTree = CSharpSyntaxTree.ParseFile(fileName);
+                SyntaxTree syntaxTree = CSharpSyntaxTree.ParseText(SourceText.From(System.IO.File.Open(fileName, System.IO.FileMode.Open)));
                 SourceText text = syntaxTree.GetText();
                 var root = (CompilationUnitSyntax) syntaxTree.GetRoot();
 

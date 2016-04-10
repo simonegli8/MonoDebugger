@@ -52,7 +52,7 @@
     </Buttons>
     
     <Bitmaps>
-      <Bitmap guid="guidImages" href="..\Resources\Images.png" usedList="publish"/>      
+      <Bitmap guid="guidImages" href="..\Resources\RunMono.png" usedList="publish"/>      
     </Bitmaps> 
   </Commands>
   
